@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import "./style.css";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Ground } from "./Ground.js";
+import Car from "./Car.js";
 
 function CarShow() {
   return (
@@ -12,6 +13,8 @@ function CarShow() {
       <PerspectiveCamera makeDefault fov={50} position={[3, 2, 5]} />
 
       <color attach="background" args={[0, 0, 0]} />
+
+      <Car />
 
       <spotLight
         color={[1, 0.25, 0.71]}
