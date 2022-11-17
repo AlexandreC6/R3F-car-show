@@ -1,10 +1,16 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import "./style.css";
-import { CubeCamera, Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import {
+  CubeCamera,
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import { Ground } from "./Ground.js";
 import Car from "./Car.js";
-import Rings from "./Rings.js"
+import { Boxes } from "./Boxes.js";
+import Rings from "./Rings.js";
 
 function CarShow() {
   return (
@@ -25,8 +31,6 @@ function CarShow() {
       </CubeCamera>
 
 
-      <Rings />
-
       <spotLight
         color={[1, 0.25, 0.71]}
         intensity={1.5}
@@ -45,8 +49,9 @@ function CarShow() {
         castShadow
         shadow-bias={-0.0001}
       />
-
       <Ground />
+      <Rings />
+      <Boxes />
     </>
   );
 }
