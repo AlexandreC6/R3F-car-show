@@ -1,4 +1,4 @@
-import { useLoader } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import React, { useEffect } from 'react'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Mesh } from 'three';
@@ -20,6 +20,17 @@ function Car() {
       }
     })
   },[gltf]);
+
+  useFrame((state, delta) => {
+    let t = state.clock.getElapsedTime();
+
+    let group = gltf.scene.children[0].children[0].children[0].children[3];
+    // Wheels one by one
+    group.children[1].rotation.x = t * 2;
+    group.children[0].rotation.x = t * 2;
+    group.children[2].rotation.x = t * 2;
+    group.children[3].rotation.x = t * 2;
+  })
 
   return <primitive object={gltf.scene} />
 }
