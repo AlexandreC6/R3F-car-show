@@ -11,7 +11,7 @@ function Car() {
 
   useEffect(() => {
     gltf.scene.scale.set(0.8, 0.8, 0.8);
-    gltf.scene.position.set(0, -0.035, 0);
+    gltf.scene.position.set(0, 0, 0);
     gltf.scene.traverse((object) => {
       if(object instanceof Mesh) {
         object.castShadow = true;
