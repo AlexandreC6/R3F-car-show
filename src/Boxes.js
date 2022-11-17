@@ -11,6 +11,7 @@ function Box({ color }) {
 
   function resetPosition() {
     let v = new Vector3((Math.random() * 2 - 1) * 3, Math.random() * 2.5 + 0.1, (Math.random() * 2 - 1) * 15);
+    // Laisser la taille du model sans boxes
     if (v.x < 0) v.x -= 1.75;
     if (v.x > 0) v.x += 1.75;
 
