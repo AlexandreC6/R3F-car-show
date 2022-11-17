@@ -11,6 +11,7 @@ import { Ground } from "./Ground.js";
 import Car from "./Car.js";
 import { Boxes } from "./Boxes.js";
 import Rings from "./Rings.js";
+import { FloatingGrid } from "./FloatingGrid";
 import { Bloom, ChromaticAberration, DepthOfField, EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 
@@ -54,6 +55,7 @@ function CarShow() {
       <Ground />
       <Rings />
       <Boxes />
+      <FloatingGrid />
 
       <EffectComposer>
         <Bloom
