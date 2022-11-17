@@ -7,10 +7,14 @@ export default function Rings() {
   const itemsRef = useRef([])
 
   useFrame((state) => {
+    let elapsed = state.clock.getElapsedTime();
+
     for (let index = 0; index < itemsRef.current.length; index++) {
       let mesh = itemsRef.current[index];
       // [-7, 6] because we have 14 elemetns in array
-      let z = (index - 7) * 3.5;
+      // let z = (index - 7) * 3.5;
+      // mesh.position.set(0, 0, -z)
+      let z = (index - 7) * 3.5 + ((elapsed * 0.4) % 3.5) * 2;
       mesh.position.set(0, 0, -z)
 
       // Calc the distance of the rings
