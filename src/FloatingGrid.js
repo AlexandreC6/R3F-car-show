@@ -14,6 +14,10 @@ export function FloatingGrid(){
 
   },[diffuse])
 
+  useFrame((state, delta) => {
+    let t = -state.clock.getElapsedTime() * 0.68;
+    diffuse.offset.set(0, t)
+  })
 
   return <>
     <mesh rotation-x={-Math.PI * 0.5} position={[0, 0.425, 0]}>
