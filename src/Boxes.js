@@ -4,12 +4,13 @@ import { Vector3 } from "three";
 
 function Box({ color }) {
   const box = useRef();
-  const [position, setPosition] = useState(resetPosition());
+  const time = useRef(0);
+  const [position, setPosition] = useState(getInitialPosition());
   const [xRotSpeed] = useState(() => Math.random());
   const [yRotSpeed] = useState(() => Math.random());
   const [scale] = useState(() => Math.pow(Math.random(), 2.0) * 0.5 + 0.05);
 
-  function resetPosition() {
+  function getInitialPosition() {
     let v = new Vector3((Math.random() * 2 - 1) * 3, Math.random() * 2.5 + 0.1, (Math.random() * 2 - 1) * 15);
     // Laisser la taille du model sans boxes
     if (v.x < 0) v.x -= 1.75;
@@ -18,9 +19,28 @@ function Box({ color }) {
     return v;
   }
 
+  function resetPosition() {
+    let v = new Vector3((Math.random() * 2 - 1) * 3, Math.random() * 2.5 + 0.1, (Math.random() * 2 - 1) * 10 + 10);
+    // Laisser la taille du model sans boxes
+    if (v.x < 0) v.x -= 1.75;
+    if (v.x > 0) v.x += 1.75;
+
+    setPosition(v);
+  }
+
   useFrame(
     (state, delta) => {
-      box.current.position.set(position.x, position.y, position.z);
+
+      time.current += delta * 1.2;
+      let newZ = position.z - (time.current)
+
+      // Reset the position
+      if (newZ < -10) {
+        resetPosition();
+        time.current = 0
+      }
+
+      box.current.position.set(position.x, position.y, newZ);
       box.current.rotation.x += delta * xRotSpeed;
       box.current.rotation.y += delta * yRotSpeed;
     },

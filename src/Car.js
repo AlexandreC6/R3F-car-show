@@ -24,23 +24,12 @@ function Car() {
   useFrame((state, delta) => {
     let t = state.clock.getElapsedTime();
 
-    // let group = gltf.scene.children[0].children[0].children[0].children[3];
-    //roue avant gauche
     let group = gltf.scene.children[0].children[0].children[0].children[3];
-    console.log(group);
-
-    // roue avant gauche 24
-    // group.children[1].children[2].rotation.x = t * 2;
+    // Wheels one by one
     group.children[1].rotation.x = t * 2;
-    // Arrière gauche
-    // group.children[0].children[0].rotation.x = t * 2;
     group.children[0].rotation.x = t * 2;
     group.children[2].rotation.x = t * 2;
     group.children[3].rotation.x = t * 2;
-
-    //
-
-
   })
 
   return <primitive object={gltf.scene} />
